@@ -32,7 +32,7 @@ for i = 1, PlayerInServer do
 end
 
 local function processListingInfo(uid, gems, item, version, shiny, amount, boughtFrom, boughtStatus, mention)
-    local gemamount = Players.LocalPlayer.leaderstats["💎 Diamonds"].Value
+    local gemamount = Players.LocalPlayer.leaderstats["ðŸ’Ž Diamonds"].Value
     local snipeMessage ="||".. Players.LocalPlayer.Name .. "||"
     local weburl, webContent, webcolor
     if version then
@@ -76,7 +76,7 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
         ['embeds'] = {
             {
 		["author"] = {
-			["name"] = "iSnipe 🎯",
+			["name"] = "UwU ðŸ‘‰ðŸ‘ˆðŸ‘€",
 			["icon_url"] = "https://cdn.discordapp.com/attachments/1149218291957637132/1190527382583525416/new-moon-face_1f31a.png?ex=65a22006&is=658fab06&hm=55f8900eef039709c8e57c96702f8fb7df520333ec6510a81c31fc746193fbf2&",
 		},
                 ['title'] = snipeMessage,
@@ -85,11 +85,11 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
                 ['fields'] = {
                     {
                         ['name'] = "__Price:__",
-                        ['value'] = tostring(gems) .. " 💎",
+                        ['value'] = tostring(gems) .. " ðŸ’Ž",
                     },
                     {
                         ['name'] = "__Bought from:__",
-                        ['value'] = "||"..tostring(boughtFrom).."|| 🤡",
+                        ['value'] = "||"..tostring(boughtFrom).."|| ",
                     },
                     {
                         ['name'] = "__Amount:__",
@@ -97,7 +97,7 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
                     },
                     {
                         ['name'] = "__Remaining gems:__",
-                        ['value'] = tostring(gemamount) .. " 💎",
+                        ['value'] = tostring(gemamount) .. " ðŸ’Ž",
                     },      
                     {
                         ['name'] = "__PetID:__",
@@ -106,7 +106,7 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
                 },
 		["footer"] = {
                         ["icon_url"] = "https://cdn.discordapp.com/attachments/1149218291957637132/1190527382583525416/new-moon-face_1f31a.png?ex=65a22006&is=658fab06&hm=55f8900eef039709c8e57c96702f8fb7df520333ec6510a81c31fc746193fbf2&", -- optional
-                        ["text"] = "Modified by modd"
+                        ["text"] = "Heavily Modified by Broken Fan"
 		}
             },
         }
@@ -144,20 +144,29 @@ local function checklisting(uid, gems, item, version, shiny, amount, username, p
     end
 
     local price = gems / amount
-
- if type.huge and price <= 1000000 then
+    task.wait(3.05)
+    if type.huge and price <= 1000000 then	
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         if boughtPet == true then
             ping = true
-        end
-        processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)  
-    elseif type.exclusiveLevel and price <= 10000 and item ~= "Banana" and item ~= "Coin" then
+	end    
+	processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)	
+    elseif item == "Huge Hunter " and gems <= 100000 then
+        local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
+        processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet)
+    elseif type.superiorLevel and gems <= 5000 then
+        local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
+        processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet)  
+    elseif type.exclusiveLevel and gems <= 10000 and item ~= "Banana" and item ~= "Coin" then
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)
-    elseif string.find(item, "Exclusive") and price <= 25000 then
+    elseif string.find(item, "Exclusive") and gems <= 25000 then	
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)
-    elseif item == "Titanic Christmas Present" and price <= 25000 then
+    elseif string.find(item, "Charm") and gems <= 10000 then	
+        local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
+        processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)	
+    elseif item == "Titanic Christmas Present" and gems <= 25000 then
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)
     elseif item == "Chest Mimic" and gems <= 100000 then
@@ -166,19 +175,19 @@ local function checklisting(uid, gems, item, version, shiny, amount, username, p
     elseif item == "Diamond Chest Mimic" and gems <= 100000 then
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)
-    elseif item == "Fortune" and gems <= 100000 then
+    elseif item == "Fortune" and gems <= 100000 then	
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)
     elseif item == "Lucky Block" and gems <= 100000 then
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)
-    elseif item == "Massive Comet" and gems <= 100000 then
+    elseif item == "Massive Comet" and gems <= 100000 then	
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)
-    elseif item == "Crystal Key" and gems <= 10000 then
+    elseif item == "Crystal Key" and gems <= 10000 then	
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)
-    elseif item == "Crystal Key Lower Half" and gems <= 1000 then
+    elseif item == "Crystal Key Lower Half" and gems <= 1000 then	
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)
     elseif item == "Crystal Key Upper Half" and gems <= 1000 then
@@ -187,14 +196,19 @@ local function checklisting(uid, gems, item, version, shiny, amount, username, p
     elseif item == "Spinny Wheel Ticket" and gems <= 5000 then
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)
-    elseif item == "Booth Slot Voucher" and gems <= 25000 then
+    elseif item == "Booth Slot Voucher" and gems <= 25000 then	
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)
-    elseif type.titanic and price <= 10000000 then
+    elseif type.titanic and price <= 10000000 then	
         local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
         if boughtPet == true then
-            ping = true
-        end  
+	    ping = true
+	end
+        processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)
+    elseif gems == 1 and snipeNormalPets == true then	
+	snipeNormal = true
+	local boughtPet, boughtMessage = purchase:InvokeServer(playerid, uid)
+        processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, ping)  
     end
 end
 
@@ -274,4 +288,4 @@ while task.wait(1) do
     if math.floor(os.clock() - osclock) >= math.random(900, 1200) then
         jumpToServer()
     end
-end 
+end
