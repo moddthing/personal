@@ -1,4 +1,6 @@
-repeat wait() until game:IsLoaded()
+local Players = game:GetService('Players')
+local PlayerInServer = #Players:GetPlayers()
+local ostime = os.time()
 
 local function jumpToServer() 
 local sfUrl = "https://games.roblox.com/v1/games/%s/servers/Public?sortOrder=%s&limit=%s&excludeFullGames=true" 
@@ -27,6 +29,9 @@ if body and body.data then
     game:GetService("TeleportService"):TeleportToPlaceInstance(15502339080, servers[math.random(1, randomCount)], game:GetService("Players").LocalPlayer) 
 end
 
-while wait(1) do
-    jumpToServer()
+while wait(0.1) do
+    PlayerInServer = #Players:GetPlayers()
+    if PlayerInServer <= 5 or os.time() >= ostime + 900 then
+        jumpToServer()
+    end
 end
