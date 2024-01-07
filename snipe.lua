@@ -3,9 +3,9 @@ if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 
-task.wait(14) -- i hate library loading
+task.wait(20) -- i hate library loading
 
-setfpscap(10)
+setfpscap(20)
 game.Players.LocalPlayer.PlayerScripts.Scripts.Core["Idle Tracking"].Enabled = false
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 local Booths_Broadcast = game:GetService("ReplicatedStorage").Network:WaitForChild("Booths_Broadcast")
@@ -18,7 +18,7 @@ local rs = game:GetService("ReplicatedStorage")
 local snipeNormal
 local Library = require(rs:WaitForChild("Library"))
 
-if not snipeNormalPets then
+if snipeNormalPets == nil then
     snipeNormalPets = false
 end
 
@@ -70,7 +70,7 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
         ['embeds'] = {
             {
 		["author"] = {
-			["name"] = "Luna 🌚",
+			["name"] = "L🌚",
 			["icon_url"] = "https://cdn.discordapp.com/attachments/1149218291957637132/1190527382583525416/new-moon-face_1f31a.png?ex=65a22006&is=658fab06&hm=55f8900eef039709c8e57c96702f8fb7df520333ec6510a81c31fc746193fbf2&",
 		},
                 ['title'] = snipeMessage,
@@ -100,7 +100,7 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
                 },
 		["footer"] = {
                         ["icon_url"] = "https://cdn.discordapp.com/attachments/1149218291957637132/1190527382583525416/new-moon-face_1f31a.png?ex=65a22006&is=658fab06&hm=55f8900eef039709c8e57c96702f8fb7df520333ec6510a81c31fc746193fbf2&", -- optional
-                        ["text"] = "Heavily Modified by Root"
+                        ["text"] = "Root"
 		}
             },
         }
@@ -160,8 +160,7 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
                 local unitGems = gems/amount
 		snipeNormal = false
                                  
-                -- Pets
-            if string.find(item, "Huge") and unitGems <= 100000 then
+                if string.find(item, "Huge") and unitGems <= 100000 then
                 coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                 return
             elseif snipeNormalPets == true and gems == 1 then
@@ -244,6 +243,9 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
                 elseif item == "Exotic Pet" and unitGems <= 25000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
+				elseif item == "Diamond Chest" and unitGems <= 100000 then
+                    coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
+                    return
 
                 -- Misc Items
                 elseif class == "HoverBoard" and unitGems <= 30000 then 
@@ -284,7 +286,7 @@ local function jumpToServer()
     local sfUrl = "https://games.roblox.com/v1/games/%s/servers/Public?sortOrder=%s&limit=%s&excludeFullGames=true" 
     local req = request({ Url = string.format(sfUrl, 15502339080, "Desc", 100) }) 
     local body = http:JSONDecode(req.Body) 
-    local deep = math.random(1, 3)
+    local deep = math.random(1, 2)
     if deep > 1 then 
         for i = 1, deep, 1 do 
              req = request({ Url = string.format(sfUrl .. "&cursor=" .. body.nextPageCursor, 15502339080, "Desc", 100) }) 
@@ -308,7 +310,7 @@ local function jumpToServer()
 end
 
 if PlayerInServer < 25 then
-    while task.wait(1) do
+    while task.wait(10) do
 	jumpToServer()
     end
 end
@@ -316,7 +318,7 @@ end
 for i = 1, PlayerInServer do
    for ii = 1,#alts do
         if getPlayers[i].Name == alts[ii] and alts[ii] ~= Players.LocalPlayer.Name then
-            while task.wait(1) do
+            while task.wait(10) do
 		jumpToServer()
 	    end
         end
@@ -327,7 +329,7 @@ Players.PlayerRemoving:Connect(function(player)
     getPlayers = Players:GetPlayers()
     PlayerInServer = #getPlayers
     if PlayerInServer < 25 then
-        while task.wait(1) do
+        while task.wait(10) do
 	    jumpToServer()
 	end
     end
@@ -337,18 +339,18 @@ Players.PlayerAdded:Connect(function(player)
     for i = 1,#alts do
         if player.Name == alts[i] and alts[i] ~= Players.LocalPlayer.Name then
 	    task.wait(math.random(0, 60))
-            while task.wait(1) do
+            while task.wait(10) do
 	        jumpToServer()
 	    end
         end
     end
 end) 
 
-local hopDelay = math.random(840, 1140)
+local hopDelay = math.random(720, 1080)
 
 while task.wait(1) do
     if math.floor(os.clock() - osclock) >= hopDelay then
-        while task.wait(1) do
+        while task.wait(10) do
 	    jumpToServer()		
 	end	
     end
