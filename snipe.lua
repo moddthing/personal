@@ -243,7 +243,7 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
                 elseif item == "Exotic Pet" and unitGems <= 25000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
-		elseif item == "Diamond Chest" and unitGems <= 100000 then
+		elseif item == "Diamond Chest Mimic" and unitGems <= 100000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
 
