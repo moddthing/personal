@@ -129,7 +129,6 @@ local function tryPurchase(uid, gems, item, version, shiny, amount, username, cl
     local boughtPet, boughtMessage = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
     processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, class, boughtMessage, snipeNormal)
 end
-if tick() > ReadyTimeStamp then
 Booths_Broadcast.OnClientEvent:Connect(function(username, message)
     if type(message) == "table" then
         local highestTimestamp = -math.huge -- Initialize with the smallest possible number
@@ -286,7 +285,6 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
         end
     end
 end)
-end
 
 local function jumpToServer() 
     local sfUrl = "https://games.roblox.com/v1/games/%s/servers/Public?sortOrder=%s&limit=%s&excludeFullGames=true" 
