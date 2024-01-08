@@ -124,45 +124,41 @@ end
 
 local function tryPurchase(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
     if buytimestamp > listTimestamp then
-        task.wait(3.4 - Players.LocalPlayer:GetNetworkPing())
+      task.wait(3.4 - Players.LocalPlayer:GetNetworkPing())
     end
     local boughtPet, boughtMessage = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
     processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, class, boughtMessage, snipeNormal)
 end
-Booths_Broadcast.OnClientEvent:Connect(function(username, message)
-    if type(message) == "table" then
-        local highestTimestamp = -math.huge -- Initialize with the smallest possible number
-        local key = nil
-        local listing = nil
-        for v, value in pairs(message["Listings"] or {}) do
-            if type(value) == "table" and value["ItemData"] and value["ItemData"]["data"] then
-                local timestamp = value["Timestamp"]
-                if timestamp > highestTimestamp then
-                    highestTimestamp = timestamp
-                    key = v
-                    listing = value
-                end
-            end
-        end
-        if listing then
-            local buytimestamp = listing["ReadyTimestamp"]
-            local listTimestamp = listing["Timestamp"]
-            local data = listing["ItemData"]["data"]
-            local gems = tonumber(listing["DiamondCost"])
-            local uid = key
-            local item = data["id"]
-            local version = data["pt"]
-            local shiny = data["sh"]
-            local amount = tonumber(data["_am"]) or 1
-            local playerid = message['PlayerID']
-            local class = tostring(listing["ItemData"]["class"])
-            local unitGems = gems/amount
 
-            if snipeNormal then
-                if tick() > ReadyTimeStamp then
-                    buy()
+Booths_Broadcast.OnClientEvent:Connect(function(username, message)
+        if type(message) == "table" then
+            local highestTimestamp = -math.huge -- Initialize with the smallest possible number
+            local key = nil
+            local listing = nil
+            for v, value in pairs(message["Listings"] or {}) do
+                if type(value) == "table" and value["ItemData"] and value["ItemData"]["data"] then
+                    local timestamp = value["Timestamp"]
+                    if timestamp > highestTimestamp then
+                        highestTimestamp = timestamp
+                        key = v
+                        listing = value
+                    end
                 end
             end
+            if listing then
+                local buytimestamp = listing["ReadyTimestamp"]
+                local listTimestamp = listing["Timestamp"]
+                local data = listing["ItemData"]["data"]
+                local gems = tonumber(listing["DiamondCost"])
+                local uid = key
+                local item = data["id"]
+                local version = data["pt"]
+                local shiny = data["sh"]
+                local amount = tonumber(data["_am"]) or 1
+                local playerid = message['PlayerID']
+                local class = tostring(listing["ItemData"]["class"])
+                local unitGems = gems/amount
+		snipeNormal = false
                                  
                 if string.find(item, "Huge") and unitGems <= 100000 then
                 coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
