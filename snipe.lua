@@ -2,6 +2,7 @@ local osclock = os.clock()
 if not game:IsLoaded() then
     game.Loaded:Wait()
 end
+game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
 
 task.wait(20) -- i hate library loading
 
