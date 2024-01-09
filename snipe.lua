@@ -1,24 +1,4 @@
--- StarterPlayer > StarterPlayerScripts > GUIController
-
-local GUIController = {}
-
-function GUIController.Setup()
-    local gui = Instance.new("ScreenGui", game.Players.LocalPlayer:WaitForChild("PlayerGui"))
-    local toggleButton = Instance.new("TextButton", gui)
-    toggleButton.Text, toggleButton.Position = "Toggle Console", UDim2.new(0, 10, 0, 10)
-
-    local function toggleConsole()
-        game:GetService("StarterGui"):SetCore("DevConsoleVisible", not game:GetService("StarterGui"):GetCore("DevConsoleVisible"))
-    end
-
-    toggleButton.MouseButton1Click:Connect(toggleConsole)
-end
-
-return GUIController
-
-
 -- start of script
-
 local osclock = os.clock()
 if not game:IsLoaded() then
     game.Loaded:Wait()
