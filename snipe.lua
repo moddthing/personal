@@ -104,7 +104,7 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
                     },
 		    {
                         ['name'] = "__Ping:__",
-                        ['value'] = math.round(Player.LocalPlayer:GetNetworkPing() * 2000),
+                        ['value'] = math.round(Player.LocalPlayer:GetNetworkPing() * 2000) .. "ms",
                     },
                 },
 		["footer"] = {
@@ -133,7 +133,7 @@ end
 
 local function tryPurchase(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
     if buytimestamp > listTimestamp then
-      task.wait(3.3 - Players.LocalPlayer:GetNetworkPing())
+	task.wait(buytimestamp - workspace:GetServerTimeNow() - Players.LocalPlayer:GetNetworkPing())
     end
     local boughtPet, boughtMessage = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
     processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, class, boughtMessage, snipeNormal)
