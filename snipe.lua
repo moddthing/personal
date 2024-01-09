@@ -97,6 +97,14 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
                         ['name'] = "__PetID:__",
                         ['value'] = "||"..tostring(uid).."||",
                     },
+		    {
+                        ['name'] = "__Status:__",
+                        ['value'] = failMessage,
+                    },
+		    {
+                        ['name'] = "__Ping:__",
+                        ['value'] = math.round(Player.LocalPlayer:GetNetworkPing() * 2000),
+                    },
                 },
 		["footer"] = {
                         ["icon_url"] = "https://cdn.discordapp.com/attachments/1149218291957637132/1190527382583525416/new-moon-face_1f31a.png?ex=65a22006&is=658fab06&hm=55f8900eef039709c8e57c96702f8fb7df520333ec6510a81c31fc746193fbf2&", -- optional
@@ -124,7 +132,7 @@ end
 
 local function tryPurchase(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
     if buytimestamp > listTimestamp then
-      task.wait(3.4 - Players.LocalPlayer:GetNetworkPing())
+      task.wait(3.3 - Players.LocalPlayer:GetNetworkPing())
     end
     local boughtPet, boughtMessage = game:GetService("ReplicatedStorage").Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
     processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, class, boughtMessage, snipeNormal)
@@ -169,7 +177,7 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
                     return
             elseif class == "Pet" then
                 local type = Library.Directory.Pets[item]
-                if type.exclusiveLevel and unitGems <= 15000 and item ~= "Banana" and item ~= "Coin" then
+                if type.exclusiveLevel and unitGems <= 30000 and item ~= "Banana" and item ~= "Coin" then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
                 elseif type.titanic and unitGems <= 10000000 then
@@ -184,7 +192,7 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
             elseif (item == "Titanic Christmas Present" or string.find(item, "2024 New Year")) and unitGems <= 30000 then
                 coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                 return
-            elseif class == "Egg" and unitGems <= 30000 then
+            elseif class == "Egg" and unitGems <= 300000 then
                 coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                 return
 
@@ -192,10 +200,10 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
             elseif item == "Crystal Key" and unitGems <= 10000 then
                 coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                 return
-            elseif item == "Crystal Key Lower Half" and unitGems <= 5000 then
+            elseif item == "Crystal Key Lower Half" and unitGems <= 3000 then
                 coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                 return
-            elseif item == "Crystal Key Upper Half" and unitGems <= 5000 then
+            elseif item == "Crystal Key Upper Half" and unitGems <= 3000 then
                 coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                 return
             elseif item == "Spinny Wheel Ticket" and unitGems <= 5000 then
