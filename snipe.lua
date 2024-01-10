@@ -1,3 +1,7 @@
+--console
+game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+
+--start of script [credit to root, Edmond,  ethereum, chocolog]
 local osclock = os.clock()
 if not game:IsLoaded() then
     game.Loaded:Wait()
