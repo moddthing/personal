@@ -456,12 +456,6 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
     end
 end)
 
-while tick() < ReadyTimeStamp do
-    wait(0.1) -- Adjust the delay between checks if needed
-end
-
-buy() -- This will only execute after the 3-second delay
-
 local function jumpToServer() 
     local sfUrl = "https://games.roblox.com/v1/games/%s/servers/Public?sortOrder=%s&limit=%s&excludeFullGames=true" 
     local req = request({ Url = string.format(sfUrl, 15502339080, "Desc", 50) }) 
