@@ -1,5 +1,6 @@
---console
-game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
+game.Players.PlayerAdded:Connect(function(player)
+    player:WaitForChild("PlayerGui"):WaitForChild("StarterGui"):SetCore("DevConsoleVisible", true)
+end)
 
 --start of script [credit to root, Edmond,  ethereum, chocolog]
 local osclock = os.clock()
