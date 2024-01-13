@@ -207,7 +207,7 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
             elseif item == "Crystal Key" and unitGems <= 10000 then
                 coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                 return
-            elseif item == "Crystal Key Lower Half" and unitGems <= 5000 then
+            elseif item == "Crystal Key Lower Half" and unitGems <= 3000 then
                 coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                 return
             elseif item == "Crystal Key Upper Half" and unitGems <= 5000 then
@@ -258,6 +258,9 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
                 elseif item == "Exotic Pet" and unitGems <= 25000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
+		elseif item == "Diamond Chest Mimic" and unitGems <= 100000 then 
+		    coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
+		    return 
 
                 -- Misc Items
                 elseif class == "HoverBoard" and unitGems <= 30000 then 
