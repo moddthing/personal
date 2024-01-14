@@ -47,8 +47,11 @@ AddEventHandler('displayPlaytime', function()
 
         SetTextEntry('STRING')
         AddTextComponentString('^2Your playtime:^7 ' .. hours .. ' hours, ' .. minutes .. ' minutes, and ' .. seconds .. ' seconds.')
-        -- New: Position the text in the top-right corner
+        
+        -- New: Set the render ID to ensure text is brought to the front
+        SetTextRenderId(1)
         DrawText(0.95, 0.05)
+        SetTextRenderId(0)  -- Reset the render ID
     end
 end)
 
@@ -66,8 +69,11 @@ AddEventHandler('displayHopTimer', function()
 
         SetTextEntry('STRING')
         AddTextComponentString('^1Server hop in ' .. hopTimer .. 's^7')
-        -- New: Position the text in the top-right corner
+        
+        -- New: Set the render ID to ensure text is brought to the front
+        SetTextRenderId(1)
         DrawText(0.95, 0.1)
+        SetTextRenderId(0)  -- Reset the render ID
     end
 end)
 
