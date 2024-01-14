@@ -39,10 +39,16 @@ AddEventHandler('displayPlaytime', function()
         SetTextFont(4)
         SetTextProportional(0)
         SetTextScale(2.0, 2.0)
-        SetTextColour(255, 255, 0, 255)
+        SetTextColour(0, 0, 0, 255)  -- Dark color (black)
+
+        -- New: Make the text bold and bring it to the front
+        SetTextOutline()
+        SetTextDropshadow(2, 2, 0, 0, 0)  -- Offset and color for drop shadow
+
         SetTextEntry('STRING')
         AddTextComponentString('^2Your playtime:^7 ' .. hours .. ' hours, ' .. minutes .. ' minutes, and ' .. seconds .. ' seconds.')
-        DrawText(0.5, 0.5)
+        -- New: Position the text in the top-right corner
+        DrawText(0.95, 0.05)
     end
 end)
 
@@ -52,10 +58,16 @@ AddEventHandler('displayHopTimer', function()
         SetTextFont(4)
         SetTextProportional(0)
         SetTextScale(2.0, 2.0)
-        SetTextColour(255, 0, 0, 255)
+        SetTextColour(255, 0, 0, 255)  -- Dark color (red)
+
+        -- New: Make the text bold and bring it to the front
+        SetTextOutline()
+        SetTextDropshadow(2, 2, 0, 0, 0)  -- Offset and color for drop shadow
+
         SetTextEntry('STRING')
         AddTextComponentString('^1Server hop in ' .. hopTimer .. 's^7')
-        DrawText(0.5, 0.6)
+        -- New: Position the text in the top-right corner
+        DrawText(0.95, 0.1)
     end
 end)
 
