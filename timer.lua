@@ -1,6 +1,6 @@
 local startTime = 0
 local isPlaying = false
-local serverHopTime = os.clock() + math.random(720, 920)
+local serverHopTime = os.time() + math.random(720, 920)
 local hopWarningTime = 60
 local isHopScheduled = false
 
