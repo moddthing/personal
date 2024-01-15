@@ -1,5 +1,3 @@
--- Start of the script [timer and notify serverHop]
-
 local startTime = 0
 local isPlaying = false
 local serverHopTime = os.clock() + math.random(720, 920)
