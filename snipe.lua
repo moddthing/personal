@@ -130,13 +130,9 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
 end
 
 local function tryPurchase(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
-    signal = game:GetService("RunService").Heartbeat:Connect(function()
-	if buytimestamp < workspace:GetServerTimeNow() then
-	    signal:Disconnect()
-	    signal = nil
-        end
-    end)
-    repeat task.wait() until signal == nil
+    repeat
+       task.wait()
+    until not CountdownActive -- Wait until the countdown is not active
     local boughtPet, boughtMessage = rs.Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
     processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, class, boughtMessage, snipeNormal)
 end
