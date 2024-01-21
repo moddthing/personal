@@ -129,10 +129,24 @@ local function processListingInfo(uid, gems, item, version, shiny, amount, bough
     end
 end
 
+local function startItemCountdown()
+    -- Replace with the logic for starting the countdown of the item
+    CountdownActive = true
+    for i = 3, 1, -1 do
+        print("Item Countdown: " .. i) -- Replace with your preferred countdown display method
+        task.wait(1) -- Wait for 1 second
+    end
+    CountdownActive = false
+end
+
 local function tryPurchase(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
+    task.spawn(startItemCountdown) -- Start the countdown of the item in a separate thread
     repeat
-       task.wait()
-    until not CountdownActive -- Wait until the countdown is not active
+        task.wait()
+    until not CountdownActive -- Wait until the item countdown is not active
+    local boughtPet, boughtMessage = rs.Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
+    processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, class, boughtMessage, snipeNormal)
+end
     local boughtPet, boughtMessage = rs.Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
     processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, class, boughtMessage, snipeNormal)
 end
