@@ -144,9 +144,7 @@ local function tryPurchase(uid, gems, item, version, shiny, amount, username, cl
     repeat
         task.wait()
     until not CountdownActive -- Wait until the item countdown is not active
-    local boughtPet, boughtMessage = rs.Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
-    processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, class, boughtMessage, snipeNormal)
-end
+	
     local boughtPet, boughtMessage = rs.Network.Booths_RequestPurchase:InvokeServer(playerid, uid)
     processListingInfo(uid, gems, item, version, shiny, amount, username, boughtPet, class, boughtMessage, snipeNormal)
 end
