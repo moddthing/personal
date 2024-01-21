@@ -221,6 +221,9 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
             elseif string.find(item, "Charm") and unitGems <= 100000 and item ~= "Agility Charm" and item ~= "Coin Charm" and item ~= "Bonus Charm" and item ~= "Charm Stone" then
                 coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                 return
+	    elseif item == "Charm Stone" and unitGems <= 100000 then
+                    coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
+                    return
 	    elseif ((string.find(item, " Secret Key") or string.find(item, "Secret Key: Lower Half")) or string.find(item, "Secret Key: Upper Half")) and unitGems <= 50000 then
 		coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
 		return 
@@ -236,6 +239,9 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
 	    elseif (item == "Bundle O' Enchants" or string.find(item, "Bucket O' Magic")) and unitGems <= 10000 then
                  coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                  return
+            elseif item == "Secret Key" and unitGems <= 50000 then
+                    coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
+                    return
 
                 -- Enchants    
             elseif class == "Enchant" and unitGems <= 30000 then
