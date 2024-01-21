@@ -272,6 +272,9 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
 		elseif item == "Magic Orb" and unitGems <= 1000000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
+		elseif item == "Large Taps" and unitGems <= 100000 then
+                    coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
+                    return
 						
                 -- Misc Items
                 elseif class == "HoverBoard" and unitGems <= 30000 then 
