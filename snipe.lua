@@ -280,6 +280,9 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
                 elseif class == "Booth" and unitGems <= 10000 and item ~= "Christmas" and item ~= "Dragon" and item ~= "Rainbow" and item ~= "Gold" and item ~= "Cat" and item ~= "Egg" and item ~= "Monkey" then     
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
+		 elseif item == "Magic Shard" and unitGems <= 50000 then
+                    coroutine.wrap(tryPurchase)(uid,gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
+                    return
 
                     -- Potion   
                 elseif item == "The Cocktail" and gems <= 50000 then
