@@ -281,6 +281,9 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
 		elseif item == "Large Taps" and unitGems <= 100000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
+		elseif item == "Explosive" and unitGems <= 5000 then
+                    coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
+                    return
 						
                 -- Misc Items
                 elseif class == "HoverBoard" and unitGems <= 30000 then 
@@ -306,6 +309,10 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
                 elseif string.find(item, "Potion VIII") and price <= 50000 and item == "Diamonds Potion VI" then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
+		elseif item == "Huge Potion" and unitGems <= 50000 then
+                    coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
+                    return
+						
 
                     -- Tools 
                 elseif item == "Golden Shovel" and unitGems <= 50000 then
@@ -332,7 +339,7 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
 		elseif item == "Shiny Flag" and unitGems <= 20000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
-                elseif item == "Golden Flag" and unitGems <= 10000 then
+                elseif item == "Strength Flag" and unitGems <= 5000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
                 end
