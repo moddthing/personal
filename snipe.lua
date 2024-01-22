@@ -236,10 +236,16 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
 	    elseif item == "Charm Stone" and unitGems <= 100000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
-	    elseif ((string.find(item, " Secret Key") or string.find(item, "Secret Key: Lower Half")) or string.find(item, "Secret Key: Upper Half")) and unitGems <= 50000 then
+	    elseif ((string.find(item, "Secret Key") or string.find(item, "Secret Key: Lower Half")) or string.find(item, "Secret Key: Upper Half")) and unitGems <= 50000 then
 		coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
-		return 
-	    elseif (item == "Secret Key" or string.find(item, "Lucky Block") or string.find(item, "Piñata")) and unitGems <= 10000 then
+		return
+	    elseif item == "Secret Key Lower Half" and unitGems <= 50000 then
+                 coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
+		 return 
+            elseif item == "Secret Key Upper Half" and unitGems <= 50000 then
+                 coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp)
+                 return
+	    elseif item == "Secret Key" and unitGems <= 100000 then
                  coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                  return
 	    elseif (item == "Party Box" or string.find(item, "Bundle O' Toys")) and unitGems <= 5000 then
@@ -251,10 +257,26 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
 	    elseif (item == "Bundle O' Enchants" or string.find(item, "Bucket O' Magic")) and unitGems <= 10000 then
                  coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                  return
-            elseif item == "Secret Key" and unitGems <= 100000 then
+            elseif item == "Piñata" and unitGems <= 3000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
-
+                -- Charm 
+	    elseif item == "Overload Charm" and unitGems <= 500000 then
+                    coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp)
+                    return
+	    elseif item == "XP Charm" and unitGems <= 30000 then
+                    coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp)
+                    return
+	    elseif item == "Lightning Charm" and unitGems <= 50000 then
+                    coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp)
+                    return
+	    elseif item == "Criticals Charm" and unitGems <= 50000 then
+                    coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp)
+		    return
+	    elseif item == "TNT Charm" and unitGems <= 50000 then
+                    coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp)
+		    return 
+					
                 -- Enchants    
             elseif class == "Enchant" and unitGems <= 30000 then
                 if item == "Chest Breaker" and unitGems <= 10000000 then
@@ -293,13 +315,13 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
 		elseif item == "Diamond Chest Mimic" and unitGems <= 1000000 then 
 		    coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
 		    return
-		elseif item == "Magic Orb" and unitGems <= 1000000 then
+		elseif item == "Magic Orb" and unitGems <= 500000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
 		elseif item == "Large Taps" and unitGems <= 100000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
-		elseif item == "Explosive" and unitGems <= 5000 then
+		elseif item == "Explosive" and unitGems <= 25000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
 						
@@ -316,7 +338,7 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
 		elseif item == "Small Box" and unitGems <= 50000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
-                elseif item == "Mini Chest" and unitGems <= 10000 then
+                elseif item == "Mini Chest" and unitGems <= 50000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
 
