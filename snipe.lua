@@ -239,10 +239,10 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
 	    elseif ((string.find(item, "Secret Key") or string.find(item, "Secret Key: Lower Half")) or string.find(item, "Secret Key: Upper Half")) and unitGems <= 50000 then
 		coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
 		return
-	    elseif item == "Secret Key Lower Half" and unitGems <= 50000 then
+	    elseif item == "Secret Key: Lower Half" and unitGems <= 50000 then
                  coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
 		 return 
-            elseif item == "Secret Key Upper Half" and unitGems <= 50000 then
+            elseif item == "Secret Key: Upper Half" and unitGems <= 50000 then
                  coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp)
                  return
 	    elseif item == "Secret Key" and unitGems <= 100000 then
