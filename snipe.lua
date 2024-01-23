@@ -257,7 +257,7 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
 	    elseif (item == "Bundle O' Enchants" or string.find(item, "Bucket O' Magic")) and unitGems <= 10000 then
                  coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                  return
-            elseif item == "Piñata" and unitGems <= 3000 then
+            elseif item == "Piñata" and unitGems <= 20000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
                 -- Charm 
@@ -309,7 +309,7 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
                 elseif item == "Party Time" and unitGems <= 100000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
-                elseif item == "Exotic Pet" and unitGems <= 70000 then
+                elseif item == "Exotic Pet" and unitGems <= 50000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
 		elseif item == "Diamond Chest Mimic" and unitGems <= 1000000 then 
@@ -373,13 +373,13 @@ Booths_Broadcast.OnClientEvent:Connect(function(username, message)
                 elseif item == "Exotic Treasure Flag" and unitGems <= 50000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
-		elseif item == "Rainbow Flag" and unitGems <= 50000 then
+		elseif item == "Rainbow Flag" and unitGems <= 10000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
-		elseif item == "Shiny Flag" and unitGems <= 20000 then
+		elseif item == "Shiny Flag" and unitGems <= 10000 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
-                elseif item == "Strength Flag" and unitGems <= 5000 then
+                elseif item == "Strength Flag" and unitGems <= 500 then
                     coroutine.wrap(tryPurchase)(uid, gems, item, version, shiny, amount, username, class, playerid, buytimestamp, listTimestamp, snipeNormal)
                     return
                 end
